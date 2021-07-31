@@ -1,0 +1,61 @@
+
+
+#Create the Main Docker containers 1, 2, 3 
+
+cd de/Main/docker
+docker-compose up -d
+
+#Go to notebooks Inside Spark 
+cd de/Main/docker
+docker exec -it docker_spark_1 bash
+jupyter notebook list
+
+http://185.185.126.143:8889/
+http://185.185.126.143:8888/
+
+
+cd de/Main/docker
+docker exec -it docker_spark1_1 bash
+jupyter notebook list
+
+
+#system Permission to edit 
+chmod -R 777 /root/de/Main/notebooks1
+
+##CHECK SPARK 
+http://185.185.126.143:4040/jobs/
+
+##view topics 
+docker exec -it docker_kafka_1 bash
+kafka-topics.sh     --zookeeper docker_zookeeper_1:2181     --describe     --topic S_Topic
+####DELETE THE TOPIC 
+kafka-topics.sh  --zookeeper docker_zookeeper_1:2181   --delete --topic <test-topic>
+
+
+#casandra 
+
+open folder 
+
+#download cassandra image and pull image, gives the port and on the users connection 
+and mounted to the cassndra folder 
+
+docker run -P -p 9742:9042 -v /root/de/cassandra_data:/var/lib/cassandra -d --name=cassandra cassandra
+
+# parque files
+docker exec -it docker_spark_1 bash
+cd /home/jovyan/work/Data/detail
+cd 
+##see parque every 60 secounds 
+ls -lrt
+
+#scale up 
+python stand alone. 
+
+for spark currently single node
+change spark context to point to yarn host --- master will co-ordinate and run in cluster. 
+Yarn configure to ran on multiple machines (master and slave)
+
+cassandra run in cluster mode 
+
+
+scrit after docker compose to install packages 

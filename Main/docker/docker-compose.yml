@@ -10,7 +10,7 @@ services:
       - "9092:9092"
     environment:
       KAFKA_ADVERTISED_HOST_NAME: 185.185.126.143 
-      KAFKA_CREATE_TOPICS: "wiki-changes:1:1"
+      KAFKA_CREATE_TOPICS: "Topic_A:1:1"  #docker template , topic not used
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -23,3 +23,12 @@ services:
       - "kafka:kafka-server" #allows spark notebook to discover kafka service by name "kafka-server"
     volumes:
       - ../notebooks:/home/jovyan/work/notebooks/
+  spark1:
+    image: jupyter/all-spark-notebook
+    ports:
+      - "8889:8888"             #jupiter ui  exposing in different ports different ports
+      - "5040-5080:4040-4080"   #spark ui 
+    links:
+      - "kafka:kafka-server" #allows spark notebook to discover kafka service by name "kafka-server"
+    volumes:
+      - ../notebooks1:/home/jovyan/work/notebooks/  

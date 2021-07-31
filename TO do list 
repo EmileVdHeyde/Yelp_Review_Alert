@@ -1,0 +1,14 @@
+
+1. Change over to new database container and write in data. 
+
+
+2. Read from the database to python charts 
+
+
+3. Embed ing the pip install into the docker file 
+
+
+4. ML model consumer to continuously stream produce the 4 columns. 
+
+
+5. Scaling up in terms of number of nodes and number of containers

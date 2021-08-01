@@ -12,5 +12,39 @@ Build a Real-time spam alert system for Yelp reviews to report users posting a h
 
 
 
+Set up 
+
+1. Set up docker containers 
+docker-compose up -d
+
+2.Add a folder to add the Cassandra data base file, and create its container 
+docker run -P -p 9742:9042 -v /root/de/cassandra_data:/var/lib/cassandra -d --name=cassandra cassandra
+
+3.Run Spark (Container 3)
+docker exec -it docker_spark_1 bash
+jupyter notebook list
+
+http://185.185.126.143:8888/
+
+Create a folder for Data , and two folders detail (For Parquet files) and cp (Check Points) within it  
+
+
+4.Run Spark (Container 4)
+docker exec -it docker_spark1_1 bash
+jupyter notebook list
+
+http://185.185.126.143:8889/
+
+Create a folder for Data , and two folders detail (For Parquet files) and cp (Check Points) within it  
+
+5. Data source 
+
+Download data from https://www.kaggle.com/yelp-dataset/yelp-dataset 
+See python code to create a sample of data to stream in the Data Folder. 
+
+
+
+
+
 
 

@@ -14,8 +14,10 @@ Build a Real-time spam alert system for Yelp reviews to report users posting a h
 
 Set up 
 
-1. Set up docker containers 
+1. Set up docker containers (This scriot creates 4 containers; 1 kafka, 2 spark containers , 1 Zoo Keeper)
 docker-compose up -d
+Remember to change to your IP adress
+Additionall run the python packages script which install all the needed python packages. 
 
 2.Add a folder to add the Cassandra data base file, and create its container 
 docker run -P -p 9742:9042 -v /root/de/cassandra_data:/var/lib/cassandra -d --name=cassandra cassandra
@@ -24,7 +26,7 @@ docker run -P -p 9742:9042 -v /root/de/cassandra_data:/var/lib/cassandra -d --na
 docker exec -it docker_spark_1 bash
 jupyter notebook list
 
-http://185.185.126.143:8888/
+http://xxx.xxx.xxx.xxx:8888/
 
 Create a folder for Data , and two folders detail (For Parquet files) and cp (Check Points) within it  
 
@@ -33,7 +35,7 @@ Create a folder for Data , and two folders detail (For Parquet files) and cp (Ch
 docker exec -it docker_spark1_1 bash
 jupyter notebook list
 
-http://185.185.126.143:8889/
+http://xxx.xxx.xxx.xxx:8889/
 
 Create a folder for Data , and two folders detail (For Parquet files) and cp (Check Points) within it  
 

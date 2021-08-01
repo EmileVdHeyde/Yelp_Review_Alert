@@ -14,7 +14,7 @@ Build a Real-time spam alert system for Yelp reviews to report users posting a h
 
 Set up 
 
-1. Set up docker containers (This scriot creates 4 containers; 1 kafka, 2 spark containers , 1 Zoo Keeper)
+1. Set up docker containers (This script creates 4 containers; 1 kafka, 2 spark containers , 1 Zoo Keeper)
 docker-compose up -d
 Remember to change to your IP adress
 Additionall run the python packages script which install all the needed python packages. 

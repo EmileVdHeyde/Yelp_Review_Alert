@@ -12,37 +12,37 @@ Build a Real-time spam alert system for Yelp reviews to report users posting a h
 
 
 
-Set up 
+# Set up 
 
-1. Set up docker containers (This script creates 4 containers; 1 kafka, 2 spark containers , 1 Zoo Keeper)
-docker-compose up -d
-Remember to change to your IP adress
-Additionall run the python packages script which install all the needed python packages. 
-
-2.Add a folder to add the Cassandra data base file, and create its container 
-docker run -P -p 9742:9042 -v /root/de/cassandra_data:/var/lib/cassandra -d --name=cassandra cassandra
-
-3.Run Spark (Container 3)
-docker exec -it docker_spark_1 bash
-jupyter notebook list
-
-http://xxx.xxx.xxx.xxx:8888/
-
-Create a folder for Data , and two folders detail (For Parquet files) and cp (Check Points) within it  
+1.	Data source
+Download data from https://www.kaggle.com/yelp-dataset/yelp-dataset
+See python code to create a sample of the data 
 
 
-4.Run Spark (Container 4)
-docker exec -it docker_spark1_1 bash
-jupyter notebook list
+2.	Set up docker containers (This script creates 4 containers; 1 kafka, 2 spark containers , 1 Zoo Keeper) using the yml file provided. Remember to change to your IP address. Additionally run the python packages script, which install all the needed python packages.
+docker-compose up -d 
 
-http://xxx.xxx.xxx.xxx:8889/
 
-Create a folder for Data , and two folders detail (For Parquet files) and cp (Check Points) within it  
+3.	I had created a folder called Cassandra_data to store all folders related to cassandra database. Create the following docker container and start cassandra.  
+docker run -P -p 9742:9042 -v /root/de/cassandra_data:/var/lib/cassandra -d --name=cassandra Cassandra
+You can connect this database to a client front end. For example I used TablePlus. I built the table spaces and table definitions within this client tool. 
 
-5. Data source 
+4.	Run Spark (Container 3) 
+      docker exec -it docker_spark_1 bash jupyter notebook list
+This will open the Jupiter notebooks in local internet browser. I had created a folder for Data , and within two folders; detail (For Parquet files) and cp (Check Points) within it.
+The notebooks contain Producer 1 which can be run to start the stream of data. A second note book plays the role of consumer. It has 3 parts ; Parque files, Aggregation and time windowed alerts. To visualise the summaries data a notebook called visualisation is provided.  There is an additional script to ad hoc push the parquet files to the Cassandra database. 
 
-Download data from https://www.kaggle.com/yelp-dataset/yelp-dataset 
-See python code to create a sample of data to stream in the Data Folder. 
+5.	Run Spark (Container 4) 
+docker exec -it docker_spark1_1 bash jupyter notebook list
+This will open the Jupiter notebooks1 in local internet browser. I had created a folder for Data , and within two folders; detail (For Parquet files) and cp (Check Points) within it. Also included is all model artifacts such as a pickle file of the NLP model, as well as tokenizer files. The notebooks contain Producer ML which starts the text stream, And consumer 2 and 3.
+
+![image](https://user-images.githubusercontent.com/8738489/129900911-fdfd38cd-6a1d-4ebf-b5c0-7e9303f79ef6.png)
+
+
+
+
+# Results 
+
 
 
 

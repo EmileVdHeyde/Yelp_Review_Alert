@@ -47,10 +47,23 @@ Build a Real-time spam alert system for Yelp reviews to report users posting a h
 
 
 
-# Results 
+# Results and Evidence 
+
+1. Aggrigarion of dataset -- Complete 
+
+   I was able to stream over a  million rows of data , and aggrigate it , and store in a database. 
+  
+   
+   The following is a view of the database and the totals. 
+   
+   ![image](https://user-images.githubusercontent.com/8738489/129901883-71a93930-9ad5-4bde-af1d-21686d828fe9.png)
+   
+   ![image](https://user-images.githubusercontent.com/8738489/129902019-8796d7ff-574d-4c8b-8732-e2462f4440ba.png)
+
+2. Real Time Alerts 
 
 
-
+3. Text data scored through a Machine Learning Model. 
 
 
 
